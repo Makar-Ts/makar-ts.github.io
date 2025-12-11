@@ -5,6 +5,7 @@ import { hideLoader, showLoader } from './loader.js';
 import * as css from './helpers/css.js';
 import { formatRepo } from './helpers/formatRepo.js';
 import { TABS, initTabs } from './tabs.js';
+import { getBadge } from './helpers/getBadge.js';
 
 showLoader()
 
@@ -41,18 +42,32 @@ const data = {
     },
   ],
 
+  info: {
+    description: `I'm a passionate and motivated junior developer focused on building modern web applications. I enjoy turning complex problems into simple, beautiful, and intuitive solutions. I am currently expanding my expertise in full-stack development and am always open to new challenges and opportunities for growth.`,
+    job: '<a href="https://metrocraft36.com/" fmain hover>Metrocraft 2036</a>',
+    learning: [`NextJS`, `Angular`, `NestJS`].map(v => `<img src="${getBadge(v)}">`).join(""),
+    confident: [`JavaScript`, `TypeScript`, `React`, `Node.js`].map(v => `<img src="${getBadge(v)}">`).join(""),
+  },
+
   repo: [
-    "Makar-Ts/ToLLMView",
-    "Makar-Ts/BetterMS",
-  ].map(r => formatRepo(output.repos.find(v => v.full_name == r))),
+    "HayatBattleshipCalculator",
+    "EurekaGRPcConnector",
+    "ToLLMView",
+    "BetterMS",
+    "DiscordChannel2Text-Exporter",
+    "CTS_Database",
+  ].map(r => formatRepo(output.repos.find(v => v.name == r))),
 
   tabs: TABS,
 }
 console.log(data);
 
+
 // for of loops
-for (let elem of utils.$('[repeat]')) {
-  let n = elem.getAttribute('repeat');
+let elem = document.querySelector('[repeat]:not([resolved])');
+while (elem) {
+  let [ n, id ] = elem.getAttribute('repeat').split(';');
+  id = id ?? 'index';
   const base = elem.innerHTML;
 
   if (Number.isNaN(Number(n)))
@@ -61,10 +76,27 @@ for (let elem of utils.$('[repeat]')) {
     n = Number(n);
 
   const out = [];
-  for (let i=0; i<n; i++) out.push(base.replace(/\{index\}/g, i));
+  for (let i=0; i<n; i++) out.push(base.replaceAll(new RegExp(`\\{${id}\\}`, 'g'), i));
 
   elem.innerHTML = out.join('');
+  elem.setAttribute('resolved', '');
+
+  elem = document.querySelector('[repeat]:not([resolved])');
 }
+
+
+// if
+for (let elem of utils.$('[if]')) {
+  const attr = elem.getAttribute('if');
+
+  const negated = attr.startsWith('!');
+  const d = getByPath(data, negated ? attr.slice(1) : attr);
+
+  if (!d != negated) {
+    elem.remove();
+  }
+}
+
 
 // value mappings
 for (let elem of utils.$('[data-value]')) {

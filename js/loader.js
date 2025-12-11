@@ -38,6 +38,12 @@ export function showLoader() {
 }
 
 export function hideLoader() {
-  loader.style.display = 'none';
-  stopAnimation();
+  animate(loader, {
+    opacity: 0,
+    ease: 'out(2)',
+    onComplete: () => {
+      loader.style.display = 'none';
+      stopAnimation();
+    }
+  })
 }

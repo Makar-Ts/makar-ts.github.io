@@ -42,17 +42,43 @@
 
 
   <div flex col id="tab_info">
-    <div class="container" flex col>
+    <div class="container" flex col gap="5px">
+      <p data-value="info.description->innerText"></p>
+
+      <div style="height: 20px;"></div>
+
+      <div class="focuson">
+        <span class="mgc_hammer_fill"></span>
+        <div data-value="info.job->innerHTML"></div>
+
+        <span class="mgc_search_2_fill"></span>
+        <div data-value="info.learning->innerHTML" flex row gap="5px" wrap></div>
+
+        <span class="mgc_check_fill"></span>
+        <div data-value="info.confident->innerHTML" flex row gap="5px" wrap></div>
+      </div>
       
     </div>
   </div>
 
 
   <div flex col repeat="repo" id="tab_projects">
-    <div class="container" flex col gap="20px">
+    <div 
+      class="container" 
+      flex col gap="20px" 
+      onclick="window.open(this.ariaLabel, '_blank');" 
+
+      data-value="repo.{index}.link->ariaLabel"
+      role="link" 
+      tabindex="0"
+    >
       <div flex col>
         <h2 data-value="repo.{index}.name->innerText"></h2>
         <p data-value="repo.{index}.description->innerText" fsec grow="1"></p>
+      </div>
+
+      <div class="topics" repeat="repo.{index}.topics;topic" if="repo.{index}.topics.length">
+        <span data-value="repo.{index}.topics.{topic}->innerText"></span>
       </div>
 
       <div flex row acenter gap="10px" class="footer">
@@ -65,11 +91,11 @@
   </div>
 
 
-  <div flex col id="tab_skills">
+  <!-- <div flex col id="tab_skills">
     <div class="container" flex col>
       
     </div>
-  </div>
+  </div> -->
 
 
   <div class="loader">

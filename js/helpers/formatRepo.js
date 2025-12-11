@@ -1,3 +1,5 @@
+import { getBadge } from "./getBadge.js";
+
 export function formatRepo(repo) {
   return {
     link: repo.svn_url,
@@ -6,8 +8,9 @@ export function formatRepo(repo) {
     }),
     name: repo.name,
     description: repo.description,
-    license: repo.license.name,
+    license: repo.license?.name ?? 'none',
     language: repo.language,
-    languageBadge: `https://img.shields.io/badge/${repo.language}-000000?style=for-the-badge&logo=${repo.language.toLowerCase()}&logoColor=white`
+    languageBadge: getBadge(repo.language),
+    topics: repo.topics ?? [],
   }
 }

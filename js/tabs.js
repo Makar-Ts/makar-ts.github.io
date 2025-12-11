@@ -11,11 +11,11 @@ const TABS = [
     bid: 'tab_projects_button',
     id: 'tab_projects'
   },
-  {
-    title: 'Skills',
-    bid: 'tab_skills_button',
-    id: 'tab_skills'
-  }
+  // {
+  //   title: 'Skills',
+  //   bid: 'tab_skills_button',
+  //   id: 'tab_skills'
+  // }
 ]
 
 

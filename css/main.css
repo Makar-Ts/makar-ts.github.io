@@ -172,11 +172,74 @@ p, span {
 }
 
 
+#tab_info {
+  .focuson {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+
 #tab_projects {
   gap: 20px;
 
   .container {
     position: relative;
+    cursor: pointer;
+
+    &:after {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+
+      font-family: 'MingCute' !important;
+      speak: never;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      content: "\efa4";
+      color: var(--color-text);
+
+      opacity: 0;
+
+      transition: .15s;
+    }
+
+    &:hover {
+      &:after {
+        opacity: 1;
+      }
+    }
+    
+
+    .topics {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      gap: 5px;
+
+      span {
+        padding: 3px 15px;
+        background-color: var(--surface-2);
+
+        box-shadow: var(--shadow-1);
+      }
+    }
+
+    .badge {
+      box-shadow: var(--shadow-1);
+    }
 
     @media (max-width: 500px) {
       .footer {

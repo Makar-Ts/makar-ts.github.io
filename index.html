@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Makar-Ts</title>
+
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+  <div class="main container" flex row gap="20px">
+    <img src="" alt="avatar" class="avatar" data-value="user.avatar_url->src">
+    <div flex col class="info" gap="5px" grow="1">
+      <h2 data-value="user.name->innerText"></h2>
+      <p data-value="user.bio->innerText" fsec grow="1"></p>
+      <div flex row gap="10px">
+        <a flex row acenter hover data-value="reposLink->href" fmain nounderline gap="3px">
+          <span class="mgc_notebook_2_fill"></span>
+          <span data-value="user.public_repos->innerText"></span>
+        </a>
+        <a flex row acenter hover data-value="companyLink->href" fmain nounderline gap="3px">
+          <span class="mgc_building_5_fill"></span>
+          <span data-value="companyName->innerText"></span>
+        </a>
+      </div>
+    </div>
+    <div flex col class="socials" repeat="socials">
+      <div flex grow="1" acenter>
+        <a flex row gap="3px" acenter fmain nounderline hover data-value="socials.{index}.link->href">
+          <span data-value="socials.{index}.spanClass->className"></span>
+          <span data-value="socials.{index}.name->innerText"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container tabs" id="tabs" repeat="tabs">
+    <div class="tab" data-value="tabs.{index}.bid->id" flex acenter jcenter hover>
+      <span data-value="tabs.{index}.title->innerText"></span>
+    </div>
+  </div>
+
+
+  <div flex col id="tab_info">
+    <div class="container" flex col>
+      
+    </div>
+  </div>
+
+
+  <div flex col repeat="repo" id="tab_projects">
+    <div class="container" flex col gap="20px">
+      <div flex col>
+        <h2 data-value="repo.{index}.name->innerText"></h2>
+        <p data-value="repo.{index}.description->innerText" fsec grow="1"></p>
+      </div>
+
+      <div flex row acenter gap="10px" class="footer">
+        <div grow="1" class="last-update">Last update: <span data-value="repo.{index}.updated->innerText"></span></div>
+        
+        <img src="" alt="badge" data-value="repo.{index}.languageBadge->src" class="badge">
+      </div>
+      
+    </div>
+  </div>
+
+
+  <div flex col id="tab_skills">
+    <div class="container" flex col>
+      
+    </div>
+  </div>
+
+
+  <div class="loader">
+    <div class="loader-container">
+
+    </div>
+  </div>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

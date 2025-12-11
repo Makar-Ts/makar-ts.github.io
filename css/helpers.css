@@ -1,0 +1,40 @@
+*[flex] {
+  display: flex;
+}
+
+*[col] {
+  flex-direction: column;
+}
+
+*[row] {
+  flex-direction: row;
+}
+
+*[jcenter] {
+  justify-content: center;
+}
+
+*[acenter] {
+  align-items: center;
+}
+
+
+*[fmain] {
+  color: var(--font-primary)
+}
+
+*[fsec] {
+  color: var(--font-secondary)
+}
+
+*[nounderline] {
+  text-decoration: none;
+}
+
+
+*[hover] {
+  transition: .15s;
+  &:hover {
+    box-shadow: var(--shadow-hovered);
+  }
+}

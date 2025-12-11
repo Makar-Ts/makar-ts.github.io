@@ -26,6 +26,11 @@ const data = {
       link: 'https://t.me/makar_ts',
     },
     {
+      spanClass: 'mgc_telegram_fill',
+      name: 'Channel',
+      link: 'https://t.me/recursion_limit',
+    },
+    {
       spanClass: 'mgc_discord_fill',
       name: 'Discord',
       link: 'https://discord.com/users/makargrom',
@@ -34,11 +39,6 @@ const data = {
       spanClass: 'mgc_mail_fill',
       name: 'Mail',
       link: 'mailto:addlove.makar+github@gmail.com',
-    },
-    {
-      spanClass: 'mgc_github_fill',
-      name: 'GitHub',
-      link: 'https://github.com/Makar-Ts',
     },
   ],
 

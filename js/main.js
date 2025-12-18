@@ -53,6 +53,7 @@ const data = {
     "HayatBattleshipCalculator",
     "EurekaGRPcConnector",
     "ToLLMView",
+    "SocialWebFormatter",
     "BetterMS",
     "DiscordChannel2Text-Exporter",
     "CTS_Database",

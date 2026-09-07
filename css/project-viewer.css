@@ -1,0 +1,53 @@
+.project-viewer {
+  position: fixed;
+  display: none;
+
+  top: 0;
+  left: 0;
+
+  --before-opacity: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,var(--before-opacity));
+
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  z-index: 5;
+
+  .view {
+    position: absolute;
+
+    background-color: var(--surface-1);
+    border: 1px solid var(--color-border);
+
+    overflow-y: auto;
+
+    z-index: 5;
+
+    #pv_title {
+      padding: 20px;
+    }
+
+    #pv_close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+
+      background-color: transparent;
+      border: none;
+      color: var(--color-text);
+      font-size: 20px;
+
+      cursor: pointer;
+    }
+
+    .project-viewer-container {
+      width: 100%;
+
+      padding: 0px 20px 20px 20px;
+    }
+  }
+}

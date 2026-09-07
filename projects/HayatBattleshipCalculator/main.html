@@ -1,0 +1,46 @@
+<style>
+  .project-description {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.6em;
+    font-weight: 600;
+    margin: 35px 0 20px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 8px;
+  }
+
+  .stack-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .stack-list li {
+    background-color: var(--surface-1);
+    padding: 8px 16px;
+    font-size: 0.9em;
+    border: 1px solid #d5dce4;
+  }
+</style>
+
+<p class="project-description" data-value="description->innerHTML" fmain></p>
+
+<h2 class="section-title" fmain>Key Features</h2>
+<ul class="cards" repeat="features">
+  <li data-value="features.{index}->innerHTML"></li>
+</ul>
+
+<h2 class="section-title" fmain>Technologies</h2>
+<ul class="stack-list" repeat="stack">
+  <li data-value="stack.{index}->innerHTML"></li>
+</ul>
+
+<p class="quote" data-value="conclusion->innerHTML"></p>

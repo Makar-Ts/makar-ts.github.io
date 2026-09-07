@@ -6,13 +6,14 @@
   <title>Makar-Ts</title>
 
   <link rel="stylesheet" href="./css/main.css">
+  <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
 </head>
 <body>
   <div class="main container" flex row gap="20px">
     <img src="" alt="avatar" class="avatar" data-value="user.avatar_url->src">
     <div flex col class="info" gap="5px" grow="1">
       <h2 data-value="user.name->innerText"></h2>
-      <p data-value="user.bio->innerText" fsec grow="1"></p>
+      <p data-value="user.bio->innerText" fsec grow="1" animate-text></p>
       <div flex row gap="10px">
         <a flex row acenter hover data-value="reposLink->href" fmain nounderline gap="3px">
           <span class="mgc_notebook_2_fill"></span>
@@ -62,31 +63,45 @@
   </div>
 
 
-  <div flex col repeat="repo" id="tab_projects">
-    <div 
-      class="container" 
-      flex col gap="20px" 
-      onclick="window.open(this.ariaLabel, '_blank');" 
-
-      data-value="repo.{index}.link->ariaLabel"
-      role="link" 
-      tabindex="0"
-    >
-      <div flex col>
-        <h2 data-value="repo.{index}.name->innerText"></h2>
-        <p data-value="repo.{index}.description->innerText" fsec grow="1"></p>
+  <div flex col id="tab_projects">
+    <div class="container tabs projects-subtabs" id="projsubTabs" repeat="projsubTabs">
+      <div class="tab small" data-value="projsubTabs.{index}.bid->id" flex acenter jcenter hover>
+        <span data-value="projsubTabs.{index}.title->innerText"></span>
       </div>
+    </div>
 
-      <div class="topics" repeat="repo.{index}.topics;topic" if="repo.{index}.topics.length">
-        <span data-value="repo.{index}.topics.{topic}->innerText"></span>
-      </div>
+    <div repeat="projsubTabs">
+      <div flex col gap="15px" repeat="projects.{index}.repo;rindex" data-value="projsubTabs.{index}.id -> id">
+        <a 
+          class="container project" 
+          flex col gap="20px" 
+          
 
-      <div flex row acenter gap="10px" class="footer">
-        <div grow="1" class="last-update">Last update: <span data-value="repo.{index}.updated->innerText"></span></div>
-        
-        <img src="" alt="badge" data-value="repo.{index}.languageBadge->src" class="badge">
+          data-value="projects.{index}.repo.{rindex}.link -> href; projects.{index}.repo.{rindex}.name -> id; projects.{index}.repoClasses.{rindex} -> className"
+          role="link" 
+          tabindex="0"
+
+          nounderline
+          fmain
+          target="_blank"
+        >
+          <div flex col>
+            <h2 data-value="projects.{index}.repo.{rindex}.name->innerText"></h2>
+            <p data-value="projects.{index}.repo.{rindex}.description->innerText" fsec grow="1"></p>
+          </div>
+
+          <div class="topics" repeat="projects.{index}.repo.{rindex}.topics;topic" if="projects.{index}.repo.{rindex}.topics.length">
+            <span data-value="projects.{index}.repo.{rindex}.topics.{topic}->innerText"></span>
+          </div>
+
+          <div flex row acenter gap="10px" class="footer">
+            <div grow="1" class="last-update">Last update: <span data-value="projects.{index}.repo.{rindex}.updated->innerText"></span></div>
+            
+            <img src="" alt="badge" data-value="projects.{index}.repo.{rindex}.languageBadge->src" class="badge">
+          </div>
+          
+        </a>
       </div>
-      
     </div>
   </div>
 
@@ -96,6 +111,17 @@
       
     </div>
   </div> -->
+
+
+  <div class="project-viewer" id="project_viewer">
+    <div class="view">
+      <h2 id="pv_title"></h2>
+      <div class="project-viewer-container" id="project_viewer_container">
+        
+      </div>
+      <button id="pv_close" class="mgc_close_fill" hover></button>
+    </div>
+  </div>
 
 
   <div class="loader">

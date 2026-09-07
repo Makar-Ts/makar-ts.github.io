@@ -1,0 +1,65 @@
+<style>
+  .photo-gallery {
+    column-count: 3;
+    column-gap: 20px;
+    width: 100%;
+  }
+
+  .photo-item {
+    break-inside: avoid;          /* запрет разрыва карточки между колонками */
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .photo-item img {
+    display: block;
+    width: 100%;
+    height: auto;                 /* сохраняем естественные пропорции */
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+  }
+
+  .photo-item:hover img {
+    transform: scale(1.02);       /* лёгкий зум при наведении */
+  }
+
+  .photo-caption {
+    position: absolute;
+    left: 5px;
+    bottom: 10px;
+    margin: 0;
+    padding: 12px 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    font-size: 0.9rem;
+    pointer-events: none;         /* чтобы не мешал клику по фото */
+  }
+
+  /* Адаптивность */
+  @media (max-width: 1024px) {
+    .photo-gallery {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .photo-gallery {
+      column-count: 1;
+    }
+  }
+</style>
+
+<!-- Разметка галереи (шаблон) -->
+<div repeat="photos" class="photo-gallery">
+  <div class="photo-item">
+    <img
+      data-value="photos.{index}.link -> src; photos.{index}.description -> alt"
+      src=""
+      alt=""
+    />
+    <p class="photo-caption" fmain data-value="photos.{index}.description -> innerText"></p>
+  </div>
+</div>

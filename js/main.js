@@ -24,6 +24,7 @@ const REPOS = [
   "ToLLMView",
   "BetterMS",
   "DiscordChannel2Text-Exporter",
+  "SocialWebFormatter",
   "CTS_Database",
 ]
 
